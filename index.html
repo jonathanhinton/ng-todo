@@ -14,6 +14,17 @@
     </section>
     <section ng-controller="TodoCtrl">
       <h1>{{title}}</h1>
+      <div>
+      <input type="text" ng-model="searchText">
+        <ul ng-repeat="todo in todos | filter:searchText">
+          <li>{{todo.name}}<button ng-click="killTodo(todo)">X</button></li>
+        </ul>
+        <div>
+          Grouped Tasks:
+          <select ng-model="theTodo" ng-options="value.name group by value.complete for value in todos">
+          </select>
+        </div>
+      </div>
     </section>
     <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
